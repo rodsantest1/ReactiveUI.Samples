@@ -8,6 +8,7 @@
 	</PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
     <PackageReference Include="ReactiveUI.WPF" Version="$(ReactiveUIVersion)" />
     <PackageReference Include="telerik.ui.for.wpf.netcore.xaml" Version="2023.1.315" />
   </ItemGroup>

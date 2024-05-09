@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Reactive;
-using ReactiveUI;
-using System.Reactive.Linq;
 using System.Reactive.Disposables;
+using System.Reactive.Linq;
+using ReactiveUI.Fody.Helpers;
 using ReactiveUI.Samples.Routing.Interactions;
+using ReactiveUI.Samples.Routing.Views;
+using ReactiveUI.Samples.Routing101;
 
 namespace ReactiveUI.Samples.Routing.ViewModels
 {
@@ -26,15 +30,20 @@ namespace ReactiveUI.Samples.Routing.ViewModels
          * constant. You can get the whole path via 
          * IRoutingState.GetUrlForCurrentRoute.
          */
-        public string UrlPathSegment {
+        public string UrlPathSegment
+        {
             get { return "welcome"; }
         }
+
+        [Reactive] public int PageIndex { get; set; }
 
         public IScreen HostScreen { get; protected set; }
 
         public ReactiveCommand<Unit, Unit> HelloWorld { get; protected set; }
 
         public ReactiveCommand<Unit, Unit> NavigateToSecond { get; }
+
+        public ObservableCollection<Employee> Employees { get; set; }
 
         /* COOLSTUFF: Why the Screen here?
          *
@@ -46,6 +55,9 @@ namespace ReactiveUI.Samples.Routing.ViewModels
         public WelcomeViewModel(IScreen screen)
         {
             HostScreen = screen;
+
+            PopulateData();
+
 
             /* COOLSTUFF: Where's the Execute handler?
              * 
@@ -61,7 +73,25 @@ namespace ReactiveUI.Samples.Routing.ViewModels
             HelloWorld = ReactiveCommand.CreateFromObservable(() => MessageInteractions.ShowMessage.Handle("It works!!!"));
             NavigateToSecond = ReactiveCommand.CreateFromTask(async () => await HostScreen.Router.Navigate.Execute(new SecondViewModel(HostScreen)).Select(_ => Unit.Default));
 
-            this.WhenNavigatedTo(()=> Bar());
+            this.WhenNavigatedTo(() => Bar());
+        }
+
+        public void PopulateData()
+        {
+            ObservableCollection<Employee> employees = new();
+            employees.Add(new Employee() { Name = "Rodney01", CompanyName = "Company01", Title = "Title01" });
+            employees.Add(new Employee() { Name = "Rodney02", CompanyName = "Company02", Title = "Title02" });
+            employees.Add(new Employee() { Name = "Rodney03", CompanyName = "Company03", Title = "Title03" });
+            employees.Add(new Employee() { Name = "Rodney04", CompanyName = "Company04", Title = "Title04" });
+            employees.Add(new Employee() { Name = "Rodney05", CompanyName = "Company05", Title = "Title05" });
+
+            employees.Add(new Employee() { Name = "Rodney06", CompanyName = "Company06", Title = "Title06" });
+            employees.Add(new Employee() { Name = "Rodney07", CompanyName = "Company07", Title = "Title07" });
+            employees.Add(new Employee() { Name = "Rodney08", CompanyName = "Company08", Title = "Title08" });
+            employees.Add(new Employee() { Name = "Rodney09", CompanyName = "Company09", Title = "Title09" });
+            employees.Add(new Employee() { Name = "Rodney10", CompanyName = "Company10", Title = "Title10" });
+
+            Employees = employees;
         }
 
         private IDisposable Bar()
@@ -71,7 +101,8 @@ namespace ReactiveUI.Samples.Routing.ViewModels
 
         private void Foo()
         {
-            if (true) { }
+            if (true)
+            { }
         }
     }
 }

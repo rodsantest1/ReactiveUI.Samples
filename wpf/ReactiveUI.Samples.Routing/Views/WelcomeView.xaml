@@ -12,13 +12,9 @@
             <Button Content="Navigate" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="navigateButton" />
             <telerik:RadTabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <telerik:RadTabItem x:Name="RadTabItem7" Header="Tab item 1">
-                    <Grid x:Name="LayoutRoot" 
+                <StackPanel x:Name="LayoutRoot" 
                 Background="White">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <telerik:RadGridView x:Name="radGridView1" 
+                    <telerik:RadGridView x:Name="radGridView1" 
                  ItemsSource="{Binding PagedSource, ElementName=radDataPager1}" 
                  AutoGenerateColumns="False">
                             <telerik:RadGridView.Columns>
@@ -29,8 +25,9 @@
                         </telerik:RadGridView>
                         <telerik:RadDataPager x:Name="radDataPager1" 
                   Source="{Binding Employees}" 
+                  PageIndex="{Binding PageIndex, Mode=TwoWay,FallbackValue=0}"                                              
                   PageSize="5" />
-                    </Grid>
+                    </StackPanel>
 
                 </telerik:RadTabItem>
                 <telerik:RadTabItem x:Name="RadTabItem8" Header="Tab item 2">
