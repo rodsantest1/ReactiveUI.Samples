@@ -29,5 +29,11 @@ namespace ReactiveUI.Samples.Routing.Views
                 d(this.BindCommand(ViewModel, vm => vm.Back, view => view.backButton));
             });
         }
+
+        private void virtualGrid_CellValueNeeded(object sender,
+        Telerik.Windows.Controls.VirtualGrid.CellValueEventArgs e)
+        {
+            e.Value = String.Format("{0}.{1}", e.RowIndex, e.ColumnIndex);
+        }
     }
 }
