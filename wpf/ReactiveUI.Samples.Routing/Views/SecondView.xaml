@@ -11,11 +11,10 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
         <Button Content="Back" Height="50" x:Name="backButton" />
-        <telerik:RadVirtualGrid x:Name="VirtualGrid"  
-                            InitialColumnCount="5"  
-                            InitialRowCount="5"
-                            CellValueNeeded="virtualGrid_CellValueNeeded"
-                                Height="150"
-                                />
+        <telerik:RadVirtualGrid x:Name="VirtualGrid" Height="102"
+                                CanUserEdit="False"
+                                InitialRowCount="10"                                
+                                InitialColumnCount="10"
+                                MeasureTextOnRender="True"/>
     </StackPanel>
 </reactiveUi:ReactiveUserControl>
