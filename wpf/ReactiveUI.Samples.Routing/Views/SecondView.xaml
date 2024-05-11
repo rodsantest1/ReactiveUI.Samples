@@ -5,10 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ReactiveUI.Samples.Routing.Views"
              xmlns:reactiveUi="http://reactiveui.net"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"                                    
              xmlns:viewModels="clr-namespace:ReactiveUI.Samples.Routing.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <StackPanel>
         <Button Content="Back" Height="50" x:Name="backButton" />
-    </Grid>
+        <telerik:RadVirtualGrid x:Name="VirtualGrid" InitialColumnCount="3" InitialRowCount="10" Height="100"  />
+
+    </StackPanel>
 </reactiveUi:ReactiveUserControl>
