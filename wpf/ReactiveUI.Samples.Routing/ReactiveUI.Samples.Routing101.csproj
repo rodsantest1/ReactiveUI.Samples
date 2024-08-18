@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-	<PropertyGroup>
-		<TargetFramework>net7.0-windows10.0.17763.0</TargetFramework>
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows10.0.17763.0</TargetFramework>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
-		<LangVersion>latest</LangVersion>
-	</PropertyGroup>
-
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
     <PackageReference Include="ReactiveUI.WPF" Version="$(ReactiveUIVersion)" />
-    <PackageReference Include="telerik.ui.for.wpf.netcore.xaml" Version="2023.1.315" />
+    <PackageReference Include="Telerik.UI.for.Wpf.70.Xaml">
+      <Version>2024.3.806.0</Version>
+    </PackageReference>
   </ItemGroup>
 </Project>
